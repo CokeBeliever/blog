@@ -4,7 +4,7 @@ export default defineConfig({
   title: "CokeBeliever 的博客",
   description: "一个博客网站",
   lang: "zh-CN",
-  base: "/",
+  base: "/blog",
   themeConfig: {
     logo: "/logo.svg",
     nav: [],
