@@ -12,19 +12,16 @@ export default defineConfig({
       {
         text: "算法和数据结构",
         collapsible: true,
-        collapsed: true,
         items: [],
       },
       {
         text: "工程化",
         collapsible: true,
-        collapsed: true,
         items: [],
       },
       {
         text: "其他",
         collapsible: true,
-        collapsed: true,
         items: [],
       },
     ],
