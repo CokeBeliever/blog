@@ -20,6 +20,13 @@ export default defineConfig({
         items: [],
       },
       {
+        text: "数据库",
+        collapsible: true,
+        items: [
+          { text: "E-R 模型", link: "/database/entity-relationship-model" },
+        ],
+      },
+      {
         text: "其他",
         collapsible: true,
         items: [],
