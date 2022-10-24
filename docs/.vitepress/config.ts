@@ -7,6 +7,7 @@ export default defineConfig({
   base: "/blog",
   themeConfig: {
     logo: "/logo.svg",
+    outline: "deep",
     nav: [],
     sidebar: [
       {
@@ -15,9 +16,18 @@ export default defineConfig({
         items: [],
       },
       {
-        text: "工程化",
+        text: "软件工程",
         collapsible: true,
-        items: [],
+        items: [
+          {
+            text: "结构化开发方法",
+            link: "/software-engineering/structured-development-method",
+          },
+          {
+            text: "系统分析与设计",
+            link: "/software-engineering/system-analysis-and-design",
+          },
+        ],
       },
       {
         text: "数据库",
