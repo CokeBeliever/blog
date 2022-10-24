@@ -44,7 +44,7 @@ export default defineConfig({
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/CokeBeliever" }],
     editLink: {
-      pattern: "https://github.com/CokeBeliever",
+      pattern: "https://github.com/CokeBeliever/blog/edit/master/docs/:path",
       text: "在 GitHub 编辑此页",
     },
   },
