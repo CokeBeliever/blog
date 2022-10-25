@@ -24,6 +24,10 @@ export default defineConfig({
             link: "/software-engineering/software-engineering-overview",
           },
           {
+            text: "软件过程模型",
+            link: "/software-engineering/software-process-model",
+          },
+          {
             text: "结构化开发方法",
             link: "/software-engineering/structured-development-method",
           },
