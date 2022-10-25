@@ -20,6 +20,10 @@ export default defineConfig({
         collapsible: true,
         items: [
           {
+            text: "软件工程概述",
+            link: "/software-engineering/software-engineering-overview",
+          },
+          {
             text: "结构化开发方法",
             link: "/software-engineering/structured-development-method",
           },
