@@ -28,6 +28,10 @@ export default defineConfig({
             text: "消息摘要",
             link: "/security/message-digest",
           },
+          {
+            text: "数字签名",
+            link: "/security/digital-signature",
+          },
         ],
       },
       {
