@@ -24,6 +24,10 @@ export default defineConfig({
             text: "加密技术",
             link: "/security/encryption",
           },
+          {
+            text: "消息摘要",
+            link: "/security/message-digest",
+          },
         ],
       },
       {
