@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import markdownItMathjax3 from "markdown-it-mathjax3";
 
 export default defineConfig({
   title: "CokeBeliever 的博客",
@@ -54,6 +55,11 @@ export default defineConfig({
     editLink: {
       pattern: "https://github.com/CokeBeliever/blog/edit/master/docs/:path",
       text: "在 GitHub 编辑此页",
+    },
+  },
+  markdown: {
+    config: (md) => {
+      md.use(markdownItMathjax3);
     },
   },
 });
