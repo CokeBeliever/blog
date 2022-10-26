@@ -17,6 +17,16 @@ export default defineConfig({
         items: [],
       },
       {
+        text: "安全",
+        collapsible: true,
+        items: [
+          {
+            text: "加密技术",
+            link: "/security/encryption",
+          },
+        ],
+      },
+      {
         text: "软件工程",
         collapsible: true,
         items: [
