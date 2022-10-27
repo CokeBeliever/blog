@@ -74,6 +74,15 @@ export default defineConfig({
         ],
       },
       {
+        text: "语言",
+        items: [
+          {
+            text: "程序设计语言",
+            link: "/language/overview-programming-language",
+          },
+        ],
+      },
+      {
         text: "其他",
         collapsible: true,
         items: [],
