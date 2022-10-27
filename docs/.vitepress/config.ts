@@ -64,6 +64,16 @@ export default defineConfig({
         ],
       },
       {
+        text: "面向对象",
+        collapsible: true,
+        items: [
+          {
+            text: "面向对象的基本概念",
+            link: "/object-oriented/basic-concept-of-object-oriented",
+          },
+        ],
+      },
+      {
         text: "其他",
         collapsible: true,
         items: [],
