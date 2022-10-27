@@ -78,7 +78,7 @@ export default defineConfig({
         collapsible: true,
         items: [
           {
-            text: "程序设计语言",
+            text: "程序设计语言概述",
             link: "/language/overview-programming-language",
           },
         ],
