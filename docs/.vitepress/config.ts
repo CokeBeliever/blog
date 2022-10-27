@@ -75,6 +75,7 @@ export default defineConfig({
       },
       {
         text: "语言",
+        collapsible: true,
         items: [
           {
             text: "程序设计语言",
