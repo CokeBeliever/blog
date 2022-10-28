@@ -71,6 +71,10 @@ export default defineConfig({
             text: "面向对象的基本概念",
             link: "/object-oriented/basic-concept-of-object-oriented",
           },
+          {
+            text: "面向对象程序设计",
+            link: "/object-oriented/object-oriented-programming",
+          },
         ],
       },
       {
