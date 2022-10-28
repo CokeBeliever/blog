@@ -89,6 +89,10 @@ export default defineConfig({
                 text: "汇编程序基本原理",
                 link: "/language/fundamentals-of-assembler",
               },
+              {
+                text: "编译程序基本原理",
+                link: "/language/fundamentals-of-compiler",
+              },
             ],
           },
         ],
