@@ -81,6 +81,10 @@ export default defineConfig({
             text: "程序设计语言概述",
             link: "/language/overview-programming-language",
           },
+          {
+            text: "语言处理程序",
+            link: "/language/language-processor",
+          },
         ],
       },
       {
