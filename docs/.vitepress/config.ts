@@ -84,6 +84,12 @@ export default defineConfig({
           {
             text: "语言处理程序",
             link: "/language/language-processor",
+            items: [
+              {
+                text: "汇编程序基本原理",
+                link: "/language/fundamentals-of-assembler",
+              },
+            ],
           },
         ],
       },
