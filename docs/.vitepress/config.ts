@@ -75,6 +75,10 @@ export default defineConfig({
             text: "面向对象程序设计",
             link: "/object-oriented/object-oriented-programming",
           },
+          {
+            text: "UML",
+            link: "/object-oriented/uml",
+          },
         ],
       },
       {
