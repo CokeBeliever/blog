@@ -14,7 +14,9 @@ export default defineConfig({
       {
         text: "算法和数据结构",
         collapsible: true,
-        items: [],
+        items: [
+          { text: "前言", link: "/algorithm-and-data-structure/preface" },
+        ],
       },
       {
         text: "安全",
