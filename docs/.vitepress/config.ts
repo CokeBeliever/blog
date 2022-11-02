@@ -16,6 +16,10 @@ export default defineConfig({
         collapsible: true,
         items: [
           { text: "前言", link: "/algorithm-and-data-structure/preface" },
+          {
+            text: "数据结构",
+            link: "/algorithm-and-data-structure/data-structure",
+          },
         ],
       },
       {
