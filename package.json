@@ -8,8 +8,16 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CokeBeliever/blog.git"
+  },
+  "author": "CokeBeliever",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CokeBeliever/blog/issues"
+  },
+  "homepage": "https://github.com/CokeBeliever/blog#readme",
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
     "prettier": "^2.7.1",
