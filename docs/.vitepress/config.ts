@@ -23,6 +23,16 @@ export default defineConfig({
         ],
       },
       {
+        text: "前端工程化",
+        collapsible: true,
+        items: [
+          {
+            text: "webpack5+ts+vue3",
+            link: "/front-end-engineering/webpack5+ts+vue3",
+          },
+        ],
+      },
+      {
         text: "安全",
         collapsible: true,
         items: [
