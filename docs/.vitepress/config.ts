@@ -33,6 +33,16 @@ export default defineConfig({
         ],
       },
       {
+        text: "计算机网络",
+        collapsible: true,
+        items: [
+          {
+            text: "HTTP 报文",
+            link: "/computer-network/http-message",
+          },
+        ],
+      },
+      {
         text: "安全",
         collapsible: true,
         items: [
