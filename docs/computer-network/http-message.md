@@ -22,7 +22,7 @@ HTTP 报文包括以下三个部分。
 <entity-body>
 ```
 
-![image-20221228214709938](http-message.assets/image-20221228214709938.png)
+![image-20221228220223152](http-message.assets/image-20221228220223152.png)
 
 **响应报文的格式：**
 
@@ -32,7 +32,7 @@ HTTP 报文包括以下三个部分。
 <entity-body>
 ```
 
-![image-20221228214749264](http-message.assets/image-20221228214749264.png)
+![image-20221228220316503](http-message.assets/image-20221228220316503.png)
 
 ## 起始行
 
