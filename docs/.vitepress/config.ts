@@ -40,6 +40,10 @@ export default defineConfig({
             text: "HTTP 报文",
             link: "/computer-network/http-message",
           },
+          {
+            text: "HTTP 缓存",
+            link: "/computer-network/http-cache",
+          },
         ],
       },
       {
