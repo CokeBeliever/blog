@@ -19,6 +19,12 @@ export default defineConfig({
           {
             text: "数据结构",
             link: "/algorithm-and-data-structure/data-structure/index",
+            items: [
+              {
+                text: "链表",
+                link: "/algorithm-and-data-structure/data-structure/linked-list",
+              },
+            ],
           },
         ],
       },
