@@ -18,7 +18,7 @@ export default defineConfig({
           { text: "前言", link: "/algorithm-and-data-structure/preface" },
           {
             text: "数据结构",
-            link: "/algorithm-and-data-structure/data-structure",
+            link: "/algorithm-and-data-structure/data-structure/index",
           },
         ],
       },
