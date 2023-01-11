@@ -24,6 +24,10 @@ export default defineConfig({
                 text: "链表",
                 link: "/algorithm-and-data-structure/data-structure/linked-list",
               },
+              {
+                text: "栈",
+                link: "/algorithm-and-data-structure/data-structure/stack",
+              },
             ],
           },
         ],
