@@ -10,11 +10,11 @@
 /**
  * 结点接口
  */
-declare interface NodeInterface<Element> {
+declare interface LinkedListNodeInterface<Element> {
   /** 当前结点的数据 */
   data: Element;
   /** 后继结点的指针 */
-  next: NodeInterface<Element> | null;
+  next: LinkedListNodeInterface<Element> | null;
 
   /**
    * 结点转字符串
@@ -29,7 +29,7 @@ declare interface NodeInterface<Element> {
 /**
  * 结点
  */
-class Node<Element> implements NodeInterface<Element> {
+class Node<Element> implements LinkedListNodeInterface<Element> {
   public data: Element;
   public next: Node<Element> | null;
 
@@ -57,7 +57,7 @@ class Node<Element> implements NodeInterface<Element> {
  * 链表接口
  */
 declare interface LinkedListInterface<Element>
-  extends Iterable<NodeInterface<Element>> {
+  extends Iterable<LinkedListNodeInterface<Element>> {
   /**
    * 在链表头部插入结点
    * @param el 数据元素
@@ -80,24 +80,24 @@ declare interface LinkedListInterface<Element>
   /**
    * 在链表头部删除结点
    */
-  deleteHead(): NodeInterface<Element> | null;
+  deleteHead(): LinkedListNodeInterface<Element> | null;
 
   /**
    * 在链表尾部删除结点
    */
-  deleteTail(): NodeInterface<Element> | null;
+  deleteTail(): LinkedListNodeInterface<Element> | null;
 
   /**
    * 在链表中删除指定数据元素的结点
    * @param el 数据元素
    */
-  delete(el: Element): NodeInterface<Element>[] | null;
+  delete(el: Element): LinkedListNodeInterface<Element>[] | null;
 
   /**
    * 在链表中查询指定数据元素的结点
    * @param el 数据元素
    */
-  find(el: Element): NodeInterface<Element> | null;
+  find(el: Element): LinkedListNodeInterface<Element> | null;
 
   /**
    * 链表反转
@@ -165,7 +165,7 @@ import Comparator from "@/utils/Comparator";
 /**
  * 结点
  */
-class Node<Element> implements NodeInterface<Element> {
+class Node<Element> implements LinkedListNodeInterface<Element> {
   public data: Element;
   public next: Node<Element> | null;
 
