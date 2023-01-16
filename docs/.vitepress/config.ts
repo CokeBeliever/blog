@@ -148,7 +148,12 @@ export default defineConfig({
       {
         text: "其他",
         collapsible: true,
-        items: [],
+        items: [
+          {
+            text: "模块",
+            link: "/other/module",
+          },
+        ],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/CokeBeliever" }],
