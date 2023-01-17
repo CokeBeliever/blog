@@ -12,6 +12,16 @@ export default defineConfig({
     nav: [],
     sidebar: [
       {
+        text: "JavaScript",
+        collapsible: true,
+        items: [
+          {
+            text: "在浏览器环境中的 JavaScript",
+            link: "/javascript/javascript-in-browser-environment",
+          },
+        ],
+      },
+      {
         text: "算法和数据结构",
         collapsible: true,
         items: [
