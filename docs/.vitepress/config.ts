@@ -19,6 +19,10 @@ export default defineConfig({
             text: "在浏览器环境中的 JavaScript",
             link: "/javascript/javascript-in-browser-environment",
           },
+          {
+            text: "在 HTML 中使用 JavaScript",
+            link: "/javascript/use-javascript-in-html",
+          },
         ],
       },
       {
