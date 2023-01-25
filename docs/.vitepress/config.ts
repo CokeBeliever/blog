@@ -23,6 +23,10 @@ export default defineConfig({
             text: "在 HTML 中使用 JavaScript",
             link: "/javascript/use-javascript-in-html",
           },
+          {
+            text: "数据类型",
+            link: "/javascript/data-type",
+          },
         ],
       },
       {
