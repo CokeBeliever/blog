@@ -30,6 +30,16 @@ export default defineConfig({
         ],
       },
       {
+        text: "CSS",
+        collapsible: true,
+        items: [
+          {
+            text: "在 HTML 中使用 CSS",
+            link: "/css/use-css-in-html",
+          },
+        ],
+      },
+      {
         text: "算法和数据结构",
         collapsible: true,
         items: [
