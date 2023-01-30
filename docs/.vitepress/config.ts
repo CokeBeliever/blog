@@ -37,6 +37,10 @@ export default defineConfig({
             text: "在 HTML 中使用 CSS",
             link: "/css/use-css-in-html",
           },
+          {
+            text: "CSS 选择符",
+            link: "/css/css-selector",
+          },
         ],
       },
       {
