@@ -41,6 +41,10 @@ export default defineConfig({
             text: "CSS 选择符",
             link: "/css/css-selector",
           },
+          {
+            text: "CSS 规则的特性",
+            link: "/css/features-of-css-rules",
+          },
         ],
       },
       {
