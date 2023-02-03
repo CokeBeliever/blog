@@ -38,6 +38,10 @@ export default defineConfig({
             link: "/css/use-css-in-html",
           },
           {
+            text: "CSS 规则的结构",
+            link: "/css/structure-of-css-rules",
+          },
+          {
             text: "CSS 选择符",
             link: "/css/css-selector",
           },
