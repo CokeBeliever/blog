@@ -106,7 +106,7 @@ export default class StackByLinkedList<Element>
 
 ### 删除数据元素
 
-链表是一个可以删除数据元素的数据结构，我们提供了下列删除数据元素的 API：
+栈是一个可以删除数据元素的数据结构，我们提供了下列删除数据元素的 API：
 
 - `pop()` 出栈
 
