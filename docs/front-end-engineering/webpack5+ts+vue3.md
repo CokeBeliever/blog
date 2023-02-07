@@ -4,6 +4,8 @@
 
 这是一篇使用 webpack5 对基于 TypeScript + Vue3 的 web 项目的配置。
 
+:link:github 仓库链接：[webpack5-ts-vue3-boilerplate](https://github.com/CokeBeliever/webpack5-ts-vue3-boilerplate)
+
 ## 初始化项目
 
 首先，让我们去创建一个目录 `webpack5-ts-vue3-boilerplate`：
@@ -888,5 +890,3 @@ module.exports = {
 │       └── vue.d.ts
 └── tsconfig.json
 ```
-
-:link:github 仓库链接：[webpack5-ts-vue3-boilerplate](https://github.com/CokeBeliever/webpack5-ts-vue3-boilerplate)
