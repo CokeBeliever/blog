@@ -27,6 +27,10 @@ export default defineConfig({
             text: "数据类型",
             link: "/javascript/data-type",
           },
+          {
+            text: "迭代器和生成器",
+            link: "/javascript/iterator-and-generator",
+          },
         ],
       },
       {
