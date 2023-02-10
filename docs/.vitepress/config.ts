@@ -31,6 +31,10 @@ export default defineConfig({
             text: "迭代器和生成器",
             link: "/javascript/iterator-and-generator",
           },
+          {
+            text: "JavaScript 对象",
+            link: "/javascript/javascript-object",
+          },
         ],
       },
       {
