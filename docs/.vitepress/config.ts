@@ -35,6 +35,10 @@ export default defineConfig({
             text: "JavaScript 对象",
             link: "/javascript/javascript-object",
           },
+          {
+            text: "继承",
+            link: "/javascript/inherit",
+          },
         ],
       },
       {
