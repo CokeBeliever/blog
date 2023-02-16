@@ -80,6 +80,10 @@ export default defineConfig({
                 text: "栈",
                 link: "/algorithm-and-data-structure/data-structure/stack",
               },
+              {
+                text: "队列",
+                link: "/algorithm-and-data-structure/data-structure/queue",
+              },
             ],
           },
         ],
