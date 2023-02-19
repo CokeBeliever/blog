@@ -64,23 +64,28 @@ export default defineConfig({
         ],
       },
       {
-        text: "Vue3",
+        text: "Vue",
         collapsible: true,
         items: [
           {
-            text: "响应式系统",
+            text: "Vue3",
             items: [
               {
-                text: "响应式系统简介",
-                link: "/vue3/reactive-system/profile-of-reactive-system",
-              },
-              {
-                text: "副作用函数",
-                link: "/vue3/reactive-system/side-effect-function",
-              },
-              {
-                text: "响应式数据",
-                link: "/vue3/reactive-system/reactive-data",
+                text: "响应式系统",
+                items: [
+                  {
+                    text: "响应式系统简介",
+                    link: "/vue/vue3/reactive-system/profile-of-reactive-system",
+                  },
+                  {
+                    text: "副作用函数",
+                    link: "/vue/vue3/reactive-system/side-effect-function",
+                  },
+                  {
+                    text: "响应式数据",
+                    link: "/vue/vue3/reactive-system/reactive-data",
+                  },
+                ],
               },
             ],
           },
