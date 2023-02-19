@@ -78,6 +78,10 @@ export default defineConfig({
                 text: "副作用函数",
                 link: "/vue3/reactive-system/side-effect-function",
               },
+              {
+                text: "响应式数据",
+                link: "/vue3/reactive-system/reactive-data",
+              },
             ],
           },
         ],
