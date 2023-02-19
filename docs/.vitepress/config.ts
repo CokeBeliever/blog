@@ -64,6 +64,21 @@ export default defineConfig({
         ],
       },
       {
+        text: "Vue3",
+        collapsible: true,
+        items: [
+          {
+            text: "响应式系统",
+            items: [
+              {
+                text: "响应式系统简介",
+                link: "/vue3/reactive-system/profile-of-reactive-system",
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: "算法和数据结构",
         collapsible: true,
         items: [
