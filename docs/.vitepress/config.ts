@@ -89,6 +89,10 @@ export default defineConfig({
                     text: "响应式系统的基本实现",
                     link: "/vue/vue3/reactive-system/basic-implementation-of-reactive-system",
                   },
+                  {
+                    text: "解决硬编码副作用函数",
+                    link: "/vue/vue3/reactive-system/resolve-hard-coded-effect-functions",
+                  },
                 ],
               },
             ],
