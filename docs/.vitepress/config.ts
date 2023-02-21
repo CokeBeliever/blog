@@ -85,6 +85,10 @@ export default defineConfig({
                     text: "响应式数据",
                     link: "/vue/vue3/reactive-system/reactive-data",
                   },
+                  {
+                    text: "响应式系统的基本实现",
+                    link: "/vue/vue3/reactive-system/basic-implementation-of-reactive-system",
+                  },
                 ],
               },
             ],
