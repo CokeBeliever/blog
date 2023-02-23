@@ -61,6 +61,10 @@ export default defineConfig({
             text: "CSS 规则的特性",
             link: "/css/features-of-css-rules",
           },
+          {
+            text: "弹性盒布局",
+            link: "/css/flex-box-layout",
+          },
         ],
       },
       {
