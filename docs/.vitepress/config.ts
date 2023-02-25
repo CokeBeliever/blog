@@ -78,24 +78,8 @@ export default defineConfig({
                 text: "响应式系统",
                 items: [
                   {
-                    text: "响应式系统简介",
-                    link: "/vue/vue3/reactive-system/profile-of-reactive-system",
-                  },
-                  {
-                    text: "副作用函数",
-                    link: "/vue/vue3/reactive-system/side-effect-function",
-                  },
-                  {
-                    text: "响应式数据",
-                    link: "/vue/vue3/reactive-system/reactive-data",
-                  },
-                  {
-                    text: "响应式系统的基本实现",
-                    link: "/vue/vue3/reactive-system/basic-implementation-of-reactive-system",
-                  },
-                  {
-                    text: "解决硬编码副作用函数",
-                    link: "/vue/vue3/reactive-system/resolve-hard-coded-effect-functions",
+                    text: "响应式系统的基本原理",
+                    link: "/vue/vue3/reactive-system/basic-principles-of-reactive-system",
                   },
                 ],
               },
