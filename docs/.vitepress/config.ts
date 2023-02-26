@@ -65,6 +65,10 @@ export default defineConfig({
             text: "弹性盒布局",
             link: "/css/flex-box-layout",
           },
+          // {
+          //   text: "栅格布局",
+          //   link: "/css/grid-layout",
+          // },
         ],
       },
       {
