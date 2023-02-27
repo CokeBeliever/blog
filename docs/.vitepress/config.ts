@@ -87,7 +87,7 @@ export default defineConfig({
                   },
                   {
                     text: "计算属性的基本原理",
-                    link: "/vue/vue3/reactive-system/basic-principles-computed",
+                    link: "/vue/vue3/reactive-system/basic-principles-of-computed",
                   },
                 ],
               },
