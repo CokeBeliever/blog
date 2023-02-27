@@ -85,6 +85,10 @@ export default defineConfig({
                     text: "响应式系统的基本原理",
                     link: "/vue/vue3/reactive-system/basic-principles-of-reactive-system",
                   },
+                  {
+                    text: "计算属性的基本原理",
+                    link: "/vue/vue3/reactive-system/basic-principles-computed",
+                  },
                 ],
               },
             ],
