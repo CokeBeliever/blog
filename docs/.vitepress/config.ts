@@ -39,6 +39,10 @@ export default defineConfig({
             text: "继承",
             link: "/javascript/inherit",
           },
+          {
+            text: "作用域 + 闭包 + 垃圾回收",
+            link: "/javascript/scope-closure-garbage-collection",
+          },
         ],
       },
       {
