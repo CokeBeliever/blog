@@ -43,6 +43,10 @@ export default defineConfig({
             text: "作用域 + 闭包 + 垃圾回收",
             link: "/javascript/scope-closure-garbage-collection",
           },
+          {
+            text: "异步编程",
+            link: "/javascript/asynchronous-programming",
+          },
         ],
       },
       {
