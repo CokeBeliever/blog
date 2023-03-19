@@ -101,6 +101,10 @@ export default defineConfig({
                     text: "watch 的基本原理",
                     link: "/vue/vue3/reactive-system/basic-principles-of-watch",
                   },
+                  {
+                    text: "代理 Object",
+                    link: "/vue/vue3/reactive-system/proxy-object",
+                  },
                 ],
               },
             ],
