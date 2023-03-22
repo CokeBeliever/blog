@@ -139,6 +139,12 @@ export default defineConfig({
               {
                 text: "树",
                 link: "/algorithm-and-data-structure/data-structure/tree/index",
+                items: [
+                  {
+                    text: "二叉树",
+                    link: "/algorithm-and-data-structure/data-structure/tree/binary-tree",
+                  },
+                ],
               },
             ],
           },
