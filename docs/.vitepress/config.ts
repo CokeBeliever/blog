@@ -136,6 +136,10 @@ export default defineConfig({
                 text: "队列",
                 link: "/algorithm-and-data-structure/data-structure/queue",
               },
+              {
+                text: "树",
+                link: "/algorithm-and-data-structure/data-structure/tree/index",
+              },
             ],
           },
         ],
