@@ -111,6 +111,15 @@ export default defineConfig({
                   },
                 ],
               },
+              {
+                text: "渲染器",
+                items: [
+                  {
+                    text: "渲染器的设计",
+                    link: "/vue/vue3/renderer/design-of-renderer",
+                  },
+                ],
+              },
             ],
           },
         ],
