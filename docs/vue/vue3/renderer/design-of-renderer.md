@@ -403,8 +403,12 @@ type Container<ElementNode, TextNode, CommentNode> = ElementContainer<
 ```typescript
 /**
  * 创建渲染器配置项
+ * @template ElementNode 平台的真实元素节点类型
+ * @template TextNode 平台的真实文本节点类型
+ * @template CommentNode 平台的真实注释节点类型
+ * @template ChildNode 平台的真实的 ChildNode 类型
  */
-interface CreateRendererOptions<ElementNode, TextNode, CommentNode> {
+interface CreateRendererOptions<ElementNode, TextNode, CommentNode, ChildNode> {
   /**
    * 创建元素节点
    * @param tag 标签名称
@@ -427,7 +431,7 @@ interface CreateRendererOptions<ElementNode, TextNode, CommentNode> {
   insert: (
     el: ElementNode | TextNode | CommentNode,
     parent: ElementNode,
-    anchor?: ElementNode | TextNode | CommentNode | null
+    anchor?: ChildNode | null
   ) => void;
 }
 ```
@@ -437,12 +441,13 @@ interface CreateRendererOptions<ElementNode, TextNode, CommentNode> {
 ```typescript
 /**
  * 创建跨平台的渲染器函数
- * @template ElementNode 真实元素节点类型
- * @template TextNode 真实文本节点类型
- * @template CommentNode 真实注释节点类型
+ * @template ElementNode 平台的真实元素节点类型
+ * @template TextNode 平台的真实文本节点类型
+ * @template CommentNode 平台的真实注释节点类型
+ * @template ChildNode 平台的真实的 ChildNode 类型
  */
-function createRenderer<ElementNode, TextNode, CommentNode>(
-  options: CreateRendererOptions<ElementNode, TextNode, CommentNode>
+function createRenderer<ElementNode, TextNode, CommentNode, ChildNode>(
+  options: CreateRendererOptions<ElementNode, TextNode, CommentNode, ChildNode>
 ) {
   /** 虚拟节点 */
   type CreateRendererVnode = Vnode<ElementNode, TextNode, CommentNode>;
@@ -505,7 +510,7 @@ function createRenderer<ElementNode, TextNode, CommentNode>(
 
 ```typescript
 // 浏览器平台渲染器
-const browserRenderer = createRenderer<HTMLElement, Text, Comment>({
+const browserRenderer = createRenderer<HTMLElement, Text, Comment, ChildNode>({
   createElement(tag) {
     return document.createElement(tag);
   },
@@ -518,7 +523,7 @@ const browserRenderer = createRenderer<HTMLElement, Text, Comment>({
 });
 
 // 通用平台渲染器
-const commonRenderer = createRenderer<any, any, any>({
+const commonRenderer = createRenderer<any, any, any, any>({
   createElement(tag) {
     console.log(`创建元素 ${tag}`);
     return { tag };
