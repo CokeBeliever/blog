@@ -118,6 +118,10 @@ export default defineConfig({
                     text: "渲染器的设计",
                     link: "/vue/vue3/renderer/design-of-renderer",
                   },
+                  {
+                    text: "渲染器的基本实现",
+                    link: "/vue/vue3/renderer/basic-implementation-of-renderer",
+                  },
                 ],
               },
             ],
