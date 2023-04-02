@@ -95,7 +95,7 @@ function unmount(
 }
 ```
 
-## 挂载操作和更新操作 (patch)
+## 挂载和更新操作 (patch)
 
 patch 函数执行的是挂载操作和更新操作。
 
@@ -1431,6 +1431,251 @@ function patchChildren(
       setElementText(container, "");
     }
     // 如果旧子节点也是没有子节点，那么不需要任何处理
+  }
+}
+```
+
+## 其他 vnode 类型
+
+### Fragment
+
+Fragment (片段) 是 Vue 3 新增的一个 vnode 类型。
+
+在 Vue2 中，组件的模板不允许存在多个根节点。例如：
+
+```vue
+<template>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</template>
+```
+
+这段代码，如果是在 Vue2 中编译，将会报错。
+
+而 Vue3 支持多根节点模板。在 Vue3 中编译，这段代码会编译为：
+
+```typescript
+const = vnode {
+  type: VnodeTypeEnum.FRAGMENT,
+  children: [
+    { type: 'li', children: '1' },
+    { type: 'li', children: '2' },
+    { type: 'li', children: '3' }
+  ]
+}
+```
+
+children 属性表示的是 Fragment 的内容可以有：不存在 (undefined)、虚拟节点数组 (Vnode[])。
+
+#### TypeScript 类型
+
+由于我们使用 TypeScript 来实现。因此，需要做一些类型上的调整：
+
+```typescript
+// 新增：FragmentVnode 接口
+/**
+ * Fragment 片段
+ * @template ElementNode 真实元素节点类型
+ * @template TextNode 真实文本节点类型
+ * @template CommentNode 真实注释节点类型
+ */
+interface FragmentVnode<ElementNode, TextNode, CommentNode>
+  extends BasicVnode<
+    VnodeTypeEnum.FRAGMENT,
+    Vnode<ElementNode, TextNode, CommentNode>[] | undefined,
+    undefined
+  > {}
+
+/**
+ * 虚拟节点
+ * @template ElementNode 真实元素节点类型
+ * @template TextNode 真实文本节点类型
+ * @template CommentNode 真实注释节点类型
+ */
+type Vnode<ElementNode, TextNode, CommentNode> =
+  | ElementVnode<ElementNode, TextNode, CommentNode>
+  | TextVnode<TextNode>
+  | CommentVnode<CommentNode>
+  // 修改：Vnode 还可能是 FragmentVnode 类型
+  | FragmentVnode<ElementNode, TextNode, CommentNode>;
+
+/**
+ * 虚拟节点类型枚举 (不表示元素虚拟节点)
+ */
+enum VnodeTypeEnum {
+  /** 文本节点的 type 标识 */
+  TEXT,
+  /** 注释节点的 type 标识 */
+  COMMENT,
+  // 新增：Fragment 枚举
+  /** Fragment 的 type 标识 */
+  FRAGMENT,
+}
+
+/**
+ * 创建跨平台的渲染器函数
+ * @template ElementNode 平台的真实元素节点类型
+ * @template TextNode 平台的真实文本节点类型
+ * @template CommentNode 平台的真实注释节点类型
+ * @template ChildNode 平台的真实的 ChildNode 类型
+ */
+function createRenderer<ElementNode, TextNode, CommentNode, ChildNode>(
+  options: CreateRendererOptions<ElementNode, TextNode, CommentNode, ChildNode>
+) {
+  // ...
+
+  // 新增：CreateRendererFragmentVnode 类型
+  /** Fragment 片段 */
+  type CreateRendererFragmentVnode = FragmentVnode<
+    ElementNode,
+    TextNode,
+    CommentNode
+  >;
+
+  // ...
+
+  /**
+   * 更新元素或 Fragment 的子节点
+   * @param n1 旧的元素或 Fragment 虚拟节点
+   * @param n2 新的元素或 Fragment 虚拟节点
+   * @param container 挂载容器
+   */
+  function patchChildren(
+    // 修改：n1 和 n2 还可能是 CreateRendererFragmentVnode 类型
+    n1: CreateRendererElementVnode | CreateRendererFragmentVnode,
+    n2: CreateRendererElementVnode | CreateRendererFragmentVnode,
+    container: CreateRendererContainer
+  ) {
+    /* ... */
+  }
+}
+```
+
+#### 挂载和更新操作 (patch)
+
+原先我们的渲染器只支持处理文本、注释、元素节点的挂载和更新操作，由于我们新增了 Fragment 类型，因此需要修改 patch 函数的实现：
+
+```typescript
+/**
+ * 更新操作、挂载操作
+ * @param n1 旧的虚拟节点、null、undefined
+ * @param n2 新的虚拟节点
+ * @param container 挂载容器
+ */
+function patch(
+  n1: CreateRendererVnode | null | undefined,
+  n2: CreateRendererVnode,
+  container: CreateRendererContainer
+) {
+  if (n1 && n1.type !== n2.type) {
+    unmount(n1, container);
+    n1 = null;
+  }
+
+  const { type } = n2;
+  if (typeof type === "string") {
+    // ...
+  } else if (type === VnodeTypeEnum.TEXT) {
+    // ...
+  } else if (type === VnodeTypeEnum.COMMENT) {
+    // ...
+  } else if (type === VnodeTypeEnum.FRAGMENT) {
+    // 如果旧的 vnode 不存在，则进行挂载操作
+    if (!n1) {
+      mountFragment(n2, container);
+    }
+    // 如果旧的 vnode 存在，则进行更新操作
+    else {
+      patchFragment(n1 as CreateRendererFragmentVnode, n2, container);
+    }
+  }
+}
+```
+
+同时，在 createRenderer 函数中新增方法，如下所示：
+
+```typescript
+/**
+ * 挂载 Fragment
+ * @param vnode Fragment 虚拟节点
+ * @param container 挂载容器
+ */
+function mountFragment(
+  vnode: CreateRendererFragmentVnode,
+  container: CreateRendererContainer
+) {}
+
+/**
+ * 更新 Fragment
+ * @param n1 旧的 Fragment 虚拟节点
+ * @param n2 新的 Fragment 虚拟节点
+ */
+function patchFragment(
+  n1: CreateRendererFragmentVnode,
+  n2: CreateRendererFragmentVnode,
+  container: CreateRendererContainer
+) {}
+```
+
+##### 挂载 (mountFragment)
+
+mountFragment 函数执行的是挂载 Fragment 操作。下面是该函数的实现：
+
+```typescript
+/**
+ * 挂载 Fragment
+ * @param vnode Fragment 虚拟节点
+ * @param container 挂载容器
+ */
+function mountFragment(
+  vnode: CreateRendererFragmentVnode,
+  container: CreateRendererContainer
+) {
+  // 只需要逐个挂载 Fragment 的 children 即可
+  vnode.children?.forEach((c) => patch(null, c, container));
+}
+```
+
+##### 更新 (patchFragment)
+
+patchFragment 函数执行的是更新 Fragment 操作。下面是该函数的实现：
+
+```typescript
+/**
+ * 更新 Fragment
+ * @param n1 旧的 Fragment 虚拟节点
+ * @param n2 新的 Fragment 虚拟节点
+ */
+function patchFragment(
+  n1: CreateRendererFragmentVnode,
+  n2: CreateRendererFragmentVnode,
+  container: CreateRendererContainer
+) {
+  // 只需要更新 Fragment 的 children 即可
+  patchChildren(n1, n2, container);
+}
+```
+
+#### 卸载操作 (unmount)
+
+原先我们的渲染器只支持处理文本、注释、元素节点的卸载操作，由于我们新增了 Fragment 类型，因此需要修改 unmount 函数的实现：
+
+```typescript
+/**
+ * 卸载操作
+ * @param vnode 虚拟节点
+ * @param container 挂载容器
+ */
+function unmount(
+  vnode: CreateRendererVnode,
+  container: CreateRendererContainer
+) {
+  // 在卸载时，如果卸载的 vnode 类型为 VnodeTypeEnum.FRAGMENT，则需要卸载其 children
+  if (vnode.type === VnodeTypeEnum.FRAGMENT) {
+    vnode.children?.forEach((c) => unmount(c, container));
+  } else {
+    remove(vnode.el!);
   }
 }
 ```
