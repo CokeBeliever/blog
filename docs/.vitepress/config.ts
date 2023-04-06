@@ -109,6 +109,10 @@ export default defineConfig({
                     text: "代理 Array",
                     link: "/vue/vue3/reactive-system/proxy-array",
                   },
+                  {
+                    text: "代理 Set 和 Map",
+                    link: "/vue/vue3/reactive-system/proxy-set-and-map",
+                  },
                 ],
               },
               {
