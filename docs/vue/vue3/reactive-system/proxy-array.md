@@ -90,7 +90,7 @@ function createReactive<T extends object>(
   obj: T,
   isShallow = false,
   isReadonly = false
-) {
+): T {
   const existionProxy = reactiveMap.get(obj);
   if (existionProxy) return existionProxy;
 
@@ -221,7 +221,7 @@ function trigger<T extends object>(
 
 因为数组也是对象，所以数组同样可以使用 for...in 循环遍历。因此数组的遍历同样可以使用 ownKeys 拦截函数进行拦截，但是数组与普通对象在影响 for...in 遍历结果的操作会有所不同：
 
-- 添加新元素或属性：`arr[100] = 'bar'`、`arr.key1 = 'foo'`
+- 添加新元素或属性：`arr[100] = 'bar'`、`arr['key1'] = 'foo'`
 - 修改数组长度：`arr.length = 0`
 
 在数组上添加新元素或属性与普通对象大致相同，因此我们不需要做任何额外的工作。主要区别是在修改数组长度，修改数组的 length 属性也会隐式地影响数组元素，所以需要触发相应的副作用函数重新执行。
@@ -241,7 +241,7 @@ function createReactive<T extends object>(
   obj: T,
   isShallow = false,
   isReadonly = false
-) {
+): T {
   const existionProxy = reactiveMap.get(obj);
   if (existionProxy) return existionProxy;
 
@@ -377,7 +377,7 @@ effect(() => {
 });
 
 arr[2] = "baz"; // 可以触发响应
-arr.key1 = "qux"; // 可以触发响应
+arr["key1"] = "qux"; // 可以触发响应
 arr.length = 1; // 可以触发响应
 ```
 
@@ -402,7 +402,7 @@ effect(() => {
 });
 
 arr[2] = "baz"; // 可以触发响应
-arr.key1 = "qux"; // 不会触发响应
+arr["key1"] = "qux"; // 不会触发响应
 arr.length = 1; // 可以触发响应
 ```
 
@@ -467,7 +467,7 @@ function createReactive<T extends object>(
   obj: T,
   isShallow = false,
   isReadonly = false
-) {
+): T {
   const existionProxy = reactiveMap.get(obj);
   if (existionProxy) return existionProxy;
 
@@ -513,7 +513,7 @@ function createReactive<T extends object>(
 规范中说明，数组的栈方法：push/pop/shift/unshift 和修改原数组的原型方法：splice，它们不仅会隐式地读取数组 length 属性，还会设置数组 length 属性。这会导致两个独立的副作用函数互相影响。例如：
 
 ```typescript
-const arr = reactive([]);
+const arr: number[] = reactive([])
 
 // 第一个副作用函数
 effect(() => {

@@ -1475,7 +1475,7 @@ children 属性表示的是 Fragment 的内容可以有：不存在 (undefined)�
 ```typescript
 // 新增：FragmentVnode 接口
 /**
- * Fragment 片段
+ * Fragment (片段) 虚拟节点
  * @template ElementNode 真实元素节点类型
  * @template TextNode 真实文本节点类型
  * @template CommentNode 真实注释节点类型
@@ -1526,7 +1526,7 @@ function createRenderer<ElementNode, TextNode, CommentNode, ChildNode>(
   // ...
 
   // 新增：CreateRendererFragmentVnode 类型
-  /** Fragment 片段 */
+  /** Fragment 虚拟节点 */
   type CreateRendererFragmentVnode = FragmentVnode<
     ElementNode,
     TextNode,
