@@ -53,7 +53,6 @@ function toRawType(target: object) {
  * @param rawType 原始类型
  */
 function targetTypeMap(rawType: string) {
-  // 从字符串 "[object RawType]" 中提取 "RawType"
   switch (rawType) {
     case "Object":
     case "Array":
@@ -151,8 +150,8 @@ function createReactive<T extends object>(
     /** 集合类型处理器 */
     collectionHandler: {
       get(target, key, receiver) {
-        // 如果读取的是 ReactiveFlags.raw 属性，则返回原始数据对象 target
-        if (key === ReactiveFlags.raw) {
+        // 如果读取的是 ReactiveFlags.RAW 属性，则返回原始数据对象 target
+        if (key === ReactiveFlags.RAW) {
           return target;
         }
 
@@ -211,7 +210,7 @@ function createReactive<T extends object>(
     /** 集合类型处理器 */
     collectionHandler: {
       get(target, key, receiver) {
-        if (key === ReactiveFlags.raw) {
+        if (key === ReactiveFlags.RAW) {
           return target;
         }
 
@@ -279,7 +278,7 @@ function createReactive<T extends object>(
     /** 集合类型处理器 */
     collectionHandler: {
       get(target, key, receiver) {
-        if (key === ReactiveFlags.raw) {
+        if (key === ReactiveFlags.RAW) {
           return target;
         }
 
@@ -333,7 +332,7 @@ function createReactive<T extends object>(
     /** 集合类型处理器 */
     collectionHandler: {
       get(target, key, receiver) {
-        if (key === ReactiveFlags.raw) {
+        if (key === ReactiveFlags.RAW) {
           return target;
         }
 
@@ -368,7 +367,7 @@ const mutableInstrumentations = {
   // ...
   has(key) {
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 调用 track 函数建立响应式联系
     track(target, key);
     return target.has(key);
@@ -388,7 +387,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Map<any, any> = this[ReactiveFlags.raw];
+    const target: Map<any, any> = this[ReactiveFlags.RAW];
     // 建立响应式联系
     track(target, key);
     // 返回调用 wrap 函数包装的结果
@@ -413,7 +412,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 与 ITERATE_KEY 建立响应式联系
     track(target, ITERATE_KEY);
     // 通过原始数据对象调用 forEach 方法，并把 callback 和 thisArg 传递过去
@@ -437,8 +436,8 @@ const mutableInstrumentations = {
 const mutableInstrumentations = {
   // ...
   add(key) {
-    // this 仍然指向的是代理对象，通过 ReactiveFlags.raw 属性获取原始数据对象
-    const target: Set<any> = this[ReactiveFlags.raw];
+    // this 仍然指向的是代理对象，通过 ReactiveFlags.RAW 属性获取原始数据对象
+    const target: Set<any> = this[ReactiveFlags.RAW];
     // 先判断 key 是否已经存在
     const had = target.has(key);
     // 通过原始数据对象执行 add 方法删除具体的值
@@ -463,7 +462,7 @@ const mutableInstrumentations = {
   // ...
   set(key, value) {
     // 获取原始数据对象
-    const target: Map<any, any> = this[ReactiveFlags.raw];
+    const target: Map<any, any> = this[ReactiveFlags.RAW];
     // 判断设置的 key 是否存在
     const had = target.has(key);
     // 获取旧值
@@ -492,7 +491,7 @@ const mutableInstrumentations = {
   // ...
   delete(key) {
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 判断 key 是否存在
     const had = target.has(key);
     const res = target.delete(key);
@@ -515,7 +514,7 @@ const mutableInstrumentations = {
   // ...
   clear() {
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 获取清除之前的 size 值
     const oldSize = target.size;
     target.clear();
@@ -551,7 +550,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 获取原始类型
     const rawType = toRawType(target);
     // 获取原始默认迭代器
@@ -601,7 +600,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 获取原始类型
     const rawType = toRawType(target);
     // 获取原始 keys 迭代器
@@ -649,7 +648,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 获取原始 valuse 迭代器
     const itr = target.values();
 
@@ -688,7 +687,7 @@ const mutableInstrumentations = {
     const wrap = (val) =>
       typeof val === "object" && val !== null ? reactive(val) : val;
     // 获取原始数据对象
-    const target: Set<any> | Map<any, any> = this[ReactiveFlags.raw];
+    const target: Set<any> | Map<any, any> = this[ReactiveFlags.RAW];
     // 获取原始 entries 迭代器
     const itr = target.entries();
 

@@ -477,7 +477,7 @@ set(target, key, value, receiver) {
  */
 enum ReactiveFlags {
   /** 访问原始数据 */
-  raw = "__v_raw",
+  RAW = "__v_raw",
 }
 
 /**
@@ -487,8 +487,8 @@ enum ReactiveFlags {
 function reactive<T extends object>(obj: T) {
   return new Proxy(obj, {
     get(target, key, receiver) {
-      // 代理对象可以通过 ReactiveFlags.raw 属性访问原始数据
-      if (key === ReactiveFlags.raw) {
+      // 代理对象可以通过 ReactiveFlags.RAW 属性访问原始数据
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -516,8 +516,8 @@ function reactive<T extends object>(obj: T) {
         : TriggerType.ADD;
       const res = Reflect.set(target, key, newVal, receiver);
 
-      // target === receiver[ReactiveFlags.raw] 说明 receiver 就是 target 的代理对象
-      if (target === receiver[ReactiveFlags.raw]) {
+      // target === receiver[ReactiveFlags.RAW] 说明 receiver 就是 target 的代理对象
+      if (target === receiver[ReactiveFlags.RAW]) {
         if (oldVal !== newVal && (oldVal === oldVal || newVal === newVal)) {
           trigger(target, key, type);
         }
@@ -563,7 +563,7 @@ obj.foo.bar = 2;
 function reactive<T extends object>(obj: T) {
   return new Proxy(obj, {
     get(target, key, receiver) {
-      if (key === ReactiveFlags.raw) {
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -586,7 +586,7 @@ function reactive<T extends object>(obj: T) {
 function reactive<T extends object>(obj: T) {
   return new Proxy(obj, {
     get(target, key, receiver) {
-      if (key === ReactiveFlags.raw) {
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -620,7 +620,7 @@ function reactive<T extends object>(obj: T) {
 function createReactive<T extends object>(obj: T, isShallow = false): T {
   return new Proxy(obj, {
     get(target, key, receiver) {
-      if (key === ReactiveFlags.raw) {
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -701,7 +701,7 @@ function createReactive<T extends object>(
 ): T {
   return new Proxy(obj, {
     get(target, key, receiver) {
-      if (key === ReactiveFlags.raw) {
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -736,7 +736,7 @@ function createReactive<T extends object>(
         : TriggerType.ADD;
       const res = Reflect.set(target, key, newVal, receiver);
 
-      if (target === receiver[ReactiveFlags.raw]) {
+      if (target === receiver[ReactiveFlags.RAW]) {
         if (oldVal !== newVal && (oldVal === oldVal || newVal === newVal)) {
           trigger(target, key, type);
         }

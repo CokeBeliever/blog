@@ -120,7 +120,7 @@ function createReactive<T extends object>(
 
       const res = Reflect.set(target, key, newVal, receiver);
 
-      if (target === receiver[ReactiveFlags.raw]) {
+      if (target === receiver[ReactiveFlags.RAW]) {
         if (oldVal !== newVal && (oldVal === oldVal || newVal === newVal)) {
           // 增加第四个参数，即触发响应的新值
           trigger(target, key, type, newVal);
@@ -267,7 +267,7 @@ function createReactive<T extends object>(
 
       const res = Reflect.set(target, key, newVal, receiver);
 
-      if (target === receiver[ReactiveFlags.raw]) {
+      if (target === receiver[ReactiveFlags.RAW]) {
         if (oldVal !== newVal && (oldVal === oldVal || newVal === newVal)) {
           // 增加第五个参数，即触发响应的旧值
           trigger(target, key, type, newVal, oldVal);
@@ -449,8 +449,8 @@ const arrayInstrumentations = {};
     let res = originMethod.apply(this, args);
 
     if (res === false || res < 0) {
-      // res 为 false || res < 0 说明没找到，通过 this[ReactiveFlags.raw] 拿到原始数组，再去其中查找，并更新 res 值
-      res = originMethod.apply(this[ReactiveFlags.raw], args);
+      // res 为 false || res < 0 说明没找到，通过 this[ReactiveFlags.RAW] 拿到原始数组，再去其中查找，并更新 res 值
+      res = originMethod.apply(this[ReactiveFlags.RAW], args);
     }
     // 返回最终结果
     return res;
@@ -473,7 +473,7 @@ function createReactive<T extends object>(
 
   const proxy = new Proxy(obj, {
     get(target, key, receiver) {
-      if (key === ReactiveFlags.raw) {
+      if (key === ReactiveFlags.RAW) {
         return target;
       }
 
@@ -513,7 +513,7 @@ function createReactive<T extends object>(
 规范中说明，数组的栈方法：push/pop/shift/unshift 和修改原数组的原型方法：splice，它们不仅会隐式地读取数组 length 属性，还会设置数组 length 属性。这会导致两个独立的副作用函数互相影响。例如：
 
 ```typescript
-const arr: number[] = reactive([])
+const arr: number[] = reactive([]);
 
 // 第一个副作用函数
 effect(() => {
