@@ -77,6 +77,10 @@ export default defineConfig({
           //   text: "栅格布局",
           //   link: "/css/grid-layout",
           // },
+          {
+            text: "媒体查询",
+            link: "/css/media-query",
+          },
         ],
       },
       {
