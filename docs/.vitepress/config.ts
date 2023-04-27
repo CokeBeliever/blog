@@ -186,6 +186,26 @@ export default defineConfig({
         ],
       },
       {
+        text: "多端适配",
+        collapsible: true,
+        items: [
+          {
+            text: "响应式网页设计",
+            link: "/multi-terminal-adaptation/responsive-web-design",
+          },
+        ],
+      },
+      {
+        text: "前端工程化",
+        collapsible: true,
+        items: [
+          {
+            text: "webpack5+ts+vue3",
+            link: "/front-end-engineering/webpack5+ts+vue3",
+          },
+        ],
+      },
+      {
         text: "计算机网络",
         collapsible: true,
         items: [
