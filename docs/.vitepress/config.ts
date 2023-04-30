@@ -190,6 +190,10 @@ export default defineConfig({
         collapsible: true,
         items: [
           {
+            text: "视口",
+            link: "/multi-terminal-adaptation/viewport",
+          },
+          {
             text: "响应式网页设计",
             link: "/multi-terminal-adaptation/responsive-web-design",
           },
