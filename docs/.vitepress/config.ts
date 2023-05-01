@@ -134,6 +134,10 @@ export default defineConfig({
                     text: "渲染器的基本实现",
                     link: "/vue/vue3/renderer/basic-implementation-of-renderer",
                   },
+                  {
+                    text: "简单 Diff 算法",
+                    link: "/vue/vue3/renderer/simple-diff-algorithm",
+                  },
                 ],
               },
             ],
