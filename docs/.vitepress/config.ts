@@ -142,6 +142,10 @@ export default defineConfig({
                     text: "双端 Diff 算法",
                     link: "/vue/vue3/renderer/double-ended-diff-algorithm",
                   },
+                  {
+                    text: "快速 Diff 算法",
+                    link: "/vue/vue3/renderer/fast-diff-algorithm",
+                  },
                 ],
               },
             ],
