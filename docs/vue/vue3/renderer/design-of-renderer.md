@@ -140,28 +140,28 @@ renderer.render(null, document.querySelector("#app"));
 ```typescript
 // -------------------- 类型代码 --------------------
 /**
- * 基础虚拟节点
- * @template Type 节点类型
- */
-interface BasicVnode<Type> {
-  /** 节点类型 */
-  type: Type;
-}
-
-/**
  * 元素虚拟节点
  */
-interface ElementVnode extends BasicVnode<string> {}
+interface ElementVnode {
+  /** 节点类型 */
+  type: string;
+}
 
 /**
  * 文本虚拟节点
  */
-interface TextVnode extends BasicVnode<VnodeTypeEnum.TEXT> {}
+interface TextVnode {
+  /** 节点类型 */
+  type: VnodeTypeEnum.TEXT;
+}
 
 /**
  * 注释虚拟节点
  */
-interface CommentVnode extends BasicVnode<VnodeTypeEnum.COMMENT> {}
+interface CommentVnode {
+  /** 节点类型 */
+  type: VnodeTypeEnum.COMMENT;
+}
 
 /**
  * 虚拟节点
@@ -170,7 +170,7 @@ type Vnode = ElementVnode | TextVnode | CommentVnode;
 
 // -------------------- 逻辑代码 --------------------
 /**
- * 虚拟节点类型枚举 (不表示元素虚拟节点)
+ * 虚拟节点类型枚举 (用于枚举文本/注释/片段虚拟节点)
  */
 enum VnodeTypeEnum {
   /** 文本节点的 type 标识 */
@@ -222,33 +222,32 @@ enum VnodeTypeEnum {
 我们可以设计 `vnode.children` 属性来表示虚拟节点的子节点，如下所示：
 
 ```typescript
-/**
- * 基础虚拟节点
- * @template Type 节点类型
- * @template Children 子节点
- */
-interface BasicVnode<Type, Children> {
+interface ElementVnode {
   /** 节点类型 */
-  type: Type;
+  type: string;
   /** 子节点 */
-  children?: Children;
+  children?: string | Vnode[];
 }
-
-/**
- * 元素虚拟节点
- */
-interface ElementVnode
-  extends BasicVnode<string, string | Vnode[] | undefined> {}
 
 /**
  * 文本虚拟节点
  */
-interface TextVnode extends BasicVnode<VnodeTypeEnum.TEXT, string> {}
+interface TextVnode {
+  /** 节点类型 */
+  type: VnodeTypeEnum.TEXT;
+  /** 子节点 */
+  children?: string;
+}
 
 /**
  * 注释虚拟节点
  */
-interface CommentVnode extends BasicVnode<VnodeTypeEnum.Comment, string> {}
+interface CommentVnode {
+  /** 节点类型 */
+  type: VnodeTypeEnum.COMMENT;
+  /** 子节点 */
+  children?: string;
+}
 ```
 
 #### 节点属性 props
@@ -282,8 +281,11 @@ interface CommentVnode extends BasicVnode<VnodeTypeEnum.Comment, string> {}
 /**
  * 元素虚拟节点
  */
-interface ElementVnode
-  extends BasicVnode<string, string | Vnode[] | undefined> {
+interface ElementVnode {
+  /** 节点类型 */
+  type: string;
+  /** 子节点 */
+  children?: string | Vnode[];
   /** 节点属性的键值对映射 */
   props?: { [key: string]: any };
 }
@@ -297,49 +299,47 @@ interface ElementVnode
 
 ```typescript
 /**
- * 基础虚拟节点
- * @template Type 节点类型类型
- * @template Children 子节点类型
- * @template El 虚拟节点对应的真实节点类型
- */
-interface BasicVnode<Type, Children, El> {
-  /** 节点类型 */
-  type: Type;
-  /** 子节点 */
-  children?: Children;
-  /** 虚拟节点对应的真实节点 */
-  el?: El;
-}
-
-/**
  * 元素虚拟节点
  * @template ElementNode 真实元素节点类型
  * @template TextNode 真实文本节点类型
  * @template CommentNode 真实注释节点类型
  */
-interface ElementVnode<ElementNode, TextNode, CommentNode>
-  extends BasicVnode<
-    string,
-    string | Vnode<ElementNode, TextNode, CommentNode>[] | undefined,
-    ElementNode
-  > {
+interface ElementVnode<ElementNode, TextNode, CommentNode> {
+  /** 节点类型 */
+  type: string;
+  /** 子节点 */
+  children?: string | Vnode<ElementNode, TextNode, CommentNode>[];
   /** 节点属性的键值对映射 */
   props?: { [key: string]: any };
+  /** 虚拟节点对应的真实节点 */
+  el?: ElementNode;
 }
 
 /**
  * 文本虚拟节点
  * @template TextNode 真实文本节点类型
  */
-interface TextVnode<TextNode>
-  extends BasicVnode<VnodeTypeEnum.TEXT, string, TextNode> {}
+interface TextVnode<TextNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.TEXT;
+  /** 子节点 */
+  children?: string;
+  /** 虚拟节点对应的真实节点 */
+  el?: TextNode;
+}
 
 /**
  * 注释虚拟节点
  * @template CommentNode 真实注释节点类型
  */
-interface CommentVnode<CommentNode>
-  extends BasicVnode<VnodeTypeEnum.Comment, string, CommentNode> {}
+interface CommentVnode<CommentNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.COMMENT;
+  /** 子节点 */
+  children?: string;
+  /** 虚拟节点对应的真实节点 */
+  el?: CommentNode;
+}
 
 /**
  * 虚拟节点

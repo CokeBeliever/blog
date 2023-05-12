@@ -211,24 +211,73 @@ const newVnode = { type: "p", key: 1, children: "2" };
 
 **实现**
 
-我们为 BasicVnode 接口添加 key 属性的声明：
+我们为所有节点接口添加 key 属性的声明：
 
 ```typescript
 /**
- * 基础虚拟节点
- * @template Type 节点类型类型
- * @template Children 子节点类型
- * @template El 虚拟节点对应的真实节点类型
+ * 元素虚拟节点
+ * @template ElementNode 真实元素节点类型
+ * @template TextNode 真实文本节点类型
+ * @template CommentNode 真实注释节点类型
  */
-interface BasicVnode<Type, Children, El> {
+interface ElementVnode<ElementNode, TextNode, CommentNode> {
   /** 节点类型 */
-  type: Type;
+  type: string;
   /** 子节点 */
-  children?: Children;
+  children?: string | Vnode<ElementNode, TextNode, CommentNode>[];
   /** 虚拟节点对应的真实节点 */
-  el?: El;
+  el?: ElementNode;
+  /** 节点属性的键值对映射 */
+  props?: { [key: string]: any };
   /** 节点标识 */
   key?: any;
+}
+
+/**
+ * 文本虚拟节点
+ * @template TextNode 真实文本节点类型
+ */
+interface TextVnode<TextNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.TEXT;
+  /** 子节点 */
+  children?: string;
+  /** 虚拟节点对应的真实节点 */
+  el?: TextNode;
+  /** 节点标识 */
+  key?: undefined;
+}
+
+/**
+ * 注释虚拟节点
+ * @template CommentNode 真实注释节点类型
+ */
+interface CommentVnode<CommentNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.COMMENT;
+  /** 子节点 */
+  children?: string;
+  /** 虚拟节点对应的真实节点 */
+  el?: CommentNode;
+  /** 节点标识 */
+  key?: undefined;
+}
+
+/**
+ * Fragment (片段) 虚拟节点
+ * @template ElementNode 真实元素节点类型
+ * @template TextNode 真实文本节点类型
+ * @template CommentNode 真实注释节点类型
+ */
+interface FragmentVnode<ElementNode, TextNode, CommentNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.FRAGMENT;
+  /** 子节点 */
+  children?: Vnode<ElementNode, TextNode, CommentNode>[];
+  /** 虚拟节点对应的真实节点 */
+  el?: undefined;
+  /** 节点标识 */
+  key?: undefined;
 }
 ```
 

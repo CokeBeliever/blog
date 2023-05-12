@@ -1480,12 +1480,14 @@ children 属性表示的是 Fragment 的内容可以有：不存在 (undefined)�
  * @template TextNode 真实文本节点类型
  * @template CommentNode 真实注释节点类型
  */
-interface FragmentVnode<ElementNode, TextNode, CommentNode>
-  extends BasicVnode<
-    VnodeTypeEnum.FRAGMENT,
-    Vnode<ElementNode, TextNode, CommentNode>[] | undefined,
-    undefined
-  > {}
+interface FragmentVnode<ElementNode, TextNode, CommentNode> {
+  /** 节点类型 */
+  type: VnodeTypeEnum.FRAGMENT;
+  /** 子节点 */
+  children?: Vnode<ElementNode, TextNode, CommentNode>[];
+  /** 虚拟节点对应的真实节点 */
+  el?: undefined;
+}
 
 /**
  * 虚拟节点
@@ -1501,7 +1503,7 @@ type Vnode<ElementNode, TextNode, CommentNode> =
   | FragmentVnode<ElementNode, TextNode, CommentNode>;
 
 /**
- * 虚拟节点类型枚举 (不表示元素虚拟节点)
+ * 虚拟节点类型枚举 (用于枚举文本/注释/片段虚拟节点)
  */
 enum VnodeTypeEnum {
   /** 文本节点的 type 标识 */
