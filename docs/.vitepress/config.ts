@@ -81,6 +81,10 @@ export default defineConfig({
             text: "媒体查询",
             link: "/css/media-query",
           },
+          {
+            text: "BEM 命名规范",
+            link: "/css/bem-naming-convention",
+          },
         ],
       },
       {
