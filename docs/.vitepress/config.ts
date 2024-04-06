@@ -203,6 +203,18 @@ export default defineConfig({
             text: ".env 文件",
             link: "/front-end-engineering/dot-env-file",
           },
+          {
+            text: "husky",
+            link: "/front-end-engineering/husky",
+          },
+          {
+            text: "lint-staged",
+            link: "/front-end-engineering/lint-staged",
+          },
+          {
+            text: "commitlint",
+            link: "/front-end-engineering/commitlint",
+          },
         ],
       },
       {
