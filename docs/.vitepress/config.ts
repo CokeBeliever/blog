@@ -342,6 +342,10 @@ export default defineConfig({
             text: "模块",
             link: "/other/module",
           },
+          {
+            text: "分块上传",
+            link: "/other/split-chunks-upload",
+          },
         ],
       },
     ],
