@@ -204,6 +204,10 @@ export default defineConfig({
             link: "/front-end-engineering/dot-env-file",
           },
           {
+            text: "eslint",
+            link: "/front-end-engineering/eslint",
+          },
+          {
             text: "husky",
             link: "/front-end-engineering/husky",
           },
