@@ -1,0 +1,1 @@
+import{_ as e,c as r,o as t,b as i}from"./app.27d7d981.js";const g=JSON.parse('{"title":"Hi \u{1F44B}, I\u2019m CokeBeliever","description":"","frontmatter":{},"headers":[],"relativePath":"index.md"}'),o={name:"index.md"},a=i("",4),l=[a];function n(s,c,_,h,f,p){return t(),r("div",null,l)}const m=e(o,[["render",n]]);export{g as __pageData,m as default};
