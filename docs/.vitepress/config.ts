@@ -196,6 +196,10 @@ export default defineConfig({
         collapsible: true,
         items: [
           {
+            text: "nuxt3-boilerplate",
+            link: "/front-end-engineering/nuxt3-boilerplate",
+          },
+          {
             text: "webpack5+ts+vue3",
             link: "/front-end-engineering/webpack5+ts+vue3",
           },
