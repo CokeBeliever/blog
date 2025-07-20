@@ -12,6 +12,31 @@ export default defineConfig({
     nav: [],
     sidebar: [
       {
+        text: "书",
+        collapsible: true,
+        items: [
+          {
+            text: "金字塔原理",
+            items: [
+              {
+                text: "第 1 篇 表达的逻辑",
+                link: "/book/pyramid-principle/the-logic-of-expression/index",
+                items: [
+                  {
+                    text: "第 1 章 为什么要采用金字塔结构",
+                    link: "/book/pyramid-principle/the-logic-of-expression/why-adopt-a-pyramid-structure",
+                  },
+                  {
+                    text: "第 2 章 金字塔内部的结构",
+                    link: "/book/pyramid-principle/the-logic-of-expression/the-internal-structure-of-the-pyramid",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: "JavaScript",
         collapsible: true,
         items: [
